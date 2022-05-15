@@ -23,16 +23,18 @@ def shop(request):
     products = Product.objects.all()
     categories = Categories.objects.all()
 
-    data = {
+    context = {
         "products": products,
         "categories": categories,
     }
-    return render(request, "shop.html", data)
+    return render(request, "shop.html", context)
 
 
 def contact(request):
-    return render(request, "contact.html")
+    context = {}
+    return render(request, "contact.html", context)
 
 
 def cart(request):
-    return render(request, "cart.html")
+    context = {}
+    return render(request, "cart.html", context)
