@@ -1,14 +1,18 @@
 from django.db import models
 
 
-class Category(models.Model):
+class Categories(models.Model):
     name = models.CharField(
         max_length=64,
-        blank=False,
+        null=True,
     )
 
     def __str__(self):
         return self.name
+
+    class Meta:
+        verbose_name = "Category"
+        verbose_name_plural = "Categories"
 
 
 class Product(models.Model):
@@ -18,12 +22,15 @@ class Product(models.Model):
         unique=True,
     )
     category = models.ForeignKey(
-        to=Category,
+        to=Categories,
         on_delete=models.CASCADE,
+        blank=True,
+        null=True,
     )
     description = models.TextField(
         default="",
         blank=False,
+        null=True,
     )
     price = models.PositiveSmallIntegerField(
         blank=False,
@@ -34,3 +41,7 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name_and_category()
+
+    class Meta:
+        verbose_name = "Product"
+        verbose_name_plural = "Products"
