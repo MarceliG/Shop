@@ -9,30 +9,15 @@
     </h1>
     <div class="container">
         <div class="row">
-            <div class="col-3">
-                <ul class="list-group-item">
-                    <li>
-                        1 lista
-                        <ul>
-                            <li>1 podlista</li>
-                        </ul>
-                        <li>
-                            2 punkt
-                            <ul>
-                                <li>no i podlista</li>
-                            </ul>
-                        </li>
-                    </li>
-                </ul>
+            <div class="col-lg-4">
+                <div class="box-element product"></div>
             </div>
-            <div class="col-7">
-                {% for pro in products %}
-                    <p>
-                        {{ pro.name }}
-                    </p>
-                {% endfor %}
+            <div class="col-lg-4">
+                <div class="box-element product"></div>
             </div>
-            <div class="col-2">dodatkowe info</div>
+            <div class="col-lg-4">
+                <div class="box-element product"></div>
+            </div>
         </div>
     </div>
 {% endblock page %}

@@ -32,9 +32,6 @@
                             <a class="nav-link active" aria-current="page" href="{% url 'forum' %}">Forum</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="{% url 'cart' %}">Cart</a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link active"
                                aria-current="page"
                                href="{% url 'contact' %}">Contact</a>
@@ -53,10 +50,15 @@
                                type="submit"
                                href="{% url 'home' %}">Logout</a>
                         </li>
-                        <li class="nav-item btn-outline-warning">
-                            <a class="nav-link" href="{% url 'cart' %}">
+                        <li class="nav-item ">
+                            <a class="nav-link btn-outline-warning" href="{% url 'cart' %}">
                                 <i class="fa-solid fa-cart-shopping"></i>
                             </a>
+                        </li>
+                        <li class="nav-item">
+                            <p id="cart-total">
+                                0
+                            </p>
                         </li>
                     </ul>
                 </div>
