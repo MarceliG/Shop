@@ -3,8 +3,9 @@ from rest_framework import viewsets
 from django.contrib.auth.models import User
 from .serializers import UserSerializer
 
+from .models import Product, Categories
 
-# ViewSets define the view behavior.
+
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
@@ -19,8 +20,25 @@ def forum(request):
 
 
 def shop(request):
-    return render(request, "shop.html")
+    products = Product.objects.all()
+    categories = Categories.objects.all()
+
+    context = {
+        "products": products,
+        "categories": categories,
+    }
+    return render(request, "shop.html", context)
 
 
 def contact(request):
-    return render(request, "contact.html")
+    context = {}
+    return render(request, "contact.html", context)
+
+
+def cart(request):
+    context = {}
+    return render(request, "cart.html", context)
+
+def checkout(request):
+    context = {}
+    return render(request, "checkout.html", context)
