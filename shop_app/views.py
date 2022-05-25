@@ -3,8 +3,6 @@ from rest_framework import viewsets
 from django.contrib.auth.models import User
 from .serializers import UserSerializer
 
-from .models import Product, Categories
-
 
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
@@ -20,14 +18,14 @@ def forum(request):
 
 
 def shop(request):
-    products = Product.objects.all()
-    categories = Categories.objects.all()
+    # products = Product.objects.all()
+    # categories = Categories.objects.all()
 
-    context = {
-        "products": products,
-        "categories": categories,
-    }
-    return render(request, "shop.html", context)
+    # context = {
+    #     "products": products,
+    #     "categories": categories,
+    # }
+    return render(request, "shop.html")
 
 
 def contact(request):
