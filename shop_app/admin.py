@@ -1,10 +1,9 @@
 from django.contrib import admin
-from .models import Product, Categories
+from .models import *
 
 
-# @admin.register(Product)
-# class ProductAdmin(admin.ModelAdmin):
-#     list_display = ("name", "category", "description", "price")
-
+admin.site.register(Customer)
 admin.site.register(Product)
-admin.site.register(Categories)
+admin.site.register(Order)
+admin.site.register(OrderItem)
+admin.site.register(ShippingAddress)
