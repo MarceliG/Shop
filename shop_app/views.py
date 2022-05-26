@@ -2,6 +2,7 @@ from django.shortcuts import render
 from rest_framework import viewsets
 from django.contrib.auth.models import User
 from .serializers import UserSerializer
+from .models import *
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -13,19 +14,23 @@ def home(request):
     return render(request, "home.html")
 
 
-def forum(request):
-    return render(request, "forum.html")
-
-
 def shop(request):
-    # products = Product.objects.all()
-    # categories = Categories.objects.all()
+    products = Product.objects.all()
 
-    # context = {
-    #     "products": products,
-    #     "categories": categories,
-    # }
-    return render(request, "shop.html")
+    context = {
+        "products": products,
+    }
+    return render(request, "shop.html", context)
+
+
+def cart(request):
+    context = {}
+    return render(request, "cart.html", context)
+
+
+def checkout(request):
+    context = {}
+    return render(request, "checkout.html", context)
 
 
 def contact(request):
@@ -33,10 +38,5 @@ def contact(request):
     return render(request, "contact.html", context)
 
 
-def cart(request):
-    context = {}
-    return render(request, "cart.html", context)
-
-def checkout(request):
-    context = {}
-    return render(request, "checkout.html", context)
+def forum(request):
+    return render(request, "forum.html")
