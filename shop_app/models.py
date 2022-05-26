@@ -1,5 +1,8 @@
+from asyncio.log import logger
+from email.mime import image
 from django.db import models
 from django.contrib.auth.models import User
+from PIL import Image
 
 
 class Customer(models.Model):
@@ -19,13 +22,21 @@ class Customer(models.Model):
 class Product(models.Model):
     name = models.CharField(max_length=200)
     price = models.FloatField()
-    # TODO add imge
+    image = models.ImageField(null=True, blank=True)
 
     def product_info(self):
         return "{} ({})".format(str(self.name), str(self.price))
 
     def __str__(self):
         return self.product_info()
+
+    @property
+    def image_url(self):
+        try:
+            url = self.image.url
+        except:
+            url = ""
+        return url
 
 
 class Order(models.Model):

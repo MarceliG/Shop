@@ -17,6 +17,9 @@ from django.contrib import admin
 from rest_framework import routers
 from django.urls import path, include
 
+from django.conf.urls.static import static
+from django.conf import settings
+
 from shop_app.views import UserViewSet
 
 # Routers provide an easy way of automatically determining the URL conf.
@@ -28,3 +31,5 @@ urlpatterns = [
     path("", include("shop_app.urls")),
     path("rest/", include(router.urls)),
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
