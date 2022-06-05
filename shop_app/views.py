@@ -1,6 +1,7 @@
 from django.shortcuts import render
-from rest_framework import viewsets
+from django.http import JsonResponse
 from django.contrib.auth.models import User
+from rest_framework import viewsets
 from .serializers import UserSerializer
 from .models import *
 
@@ -60,3 +61,7 @@ def contact(request):
 
 def forum(request):
     return render(request, "forum.html")
+
+
+def update_item(request):
+    return JsonResponse("Item was added", safe=False)
