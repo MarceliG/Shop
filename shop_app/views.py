@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import JsonResponse
+import json
 from django.contrib.auth.models import User
 from rest_framework import viewsets
 from .serializers import UserSerializer
@@ -64,4 +65,9 @@ def forum(request):
 
 
 def update_item(request):
+    data = json.loads(request.body)
+    product_id = data["product_id"]
+    action = data["action"]
+    print("Action: ", action)
+    print("Product_id: ", product_id)
     return JsonResponse("Item was added", safe=False)
